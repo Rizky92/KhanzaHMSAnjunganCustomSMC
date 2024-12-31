@@ -11,7 +11,6 @@
 package khanzahmsanjungan;
 
 import fungsi.sekuel;
-import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -20,11 +19,10 @@ import javax.swing.JOptionPane;
  *
  * @author Kode
  */
-public class DlgCekNoRM extends javax.swing.JDialog {
+public class DlgCekKunjunganBedaPoliSEP extends javax.swing.JDialog {
 
     private final sekuel Sequel = new sekuel();
-    private final validasi Valid = new validasi();
-    private final DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, true);
+    private final DlgRegistrasiSEPPertama form = new DlgRegistrasiSEPPertama(null, false);
 
     /**
      * Creates new form DlgAdmin
@@ -32,7 +30,7 @@ public class DlgCekNoRM extends javax.swing.JDialog {
      * @param parent
      * @param id
      */
-    public DlgCekNoRM(java.awt.Frame parent, boolean id) {
+    public DlgCekKunjunganBedaPoliSEP(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
     }
@@ -45,11 +43,13 @@ public class DlgCekNoRM extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jPanel2 = new javax.swing.JPanel();
+        PanelWall = new usu.widget.glass.PanelGlass();
         jPanel1 = new widget.Panel();
         NoRMPasien = new widget.TextBox();
         jLabel28 = new widget.Label();
-        BtnClose = new widget.ButtonBig();
-        BtnClose2 = new widget.ButtonBig();
+        BtnTutup = new widget.ButtonBig();
+        BtnCek = new widget.ButtonBig();
         jPanel3 = new javax.swing.JPanel();
         btnAngka8 = new javax.swing.JButton();
         btnAngka7 = new javax.swing.JButton();
@@ -63,6 +63,8 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         btnAngka0 = new javax.swing.JButton();
         btnAngkaHps = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        jLabel30 = new widget.Label();
+        jLabel29 = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
@@ -70,13 +72,42 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         setResizable(false);
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ Cek Data Pasien!!! ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(238, 238, 255));
+        jPanel2.setForeground(new java.awt.Color(238, 238, 255));
+
+        PanelWall.setBackground(new java.awt.Color(238, 238, 255));
+        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/bpjs-amiz.png"))); // NOI18N
+        PanelWall.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
+        PanelWall.setForeground(new java.awt.Color(238, 238, 255));
+        PanelWall.setPreferredSize(new java.awt.Dimension(500, 150));
+        PanelWall.setRound(false);
+        PanelWall.setWarna(new java.awt.Color(238, 238, 255));
+
+        javax.swing.GroupLayout PanelWallLayout = new javax.swing.GroupLayout(PanelWall);
+        PanelWall.setLayout(PanelWallLayout);
+        PanelWallLayout.setHorizontalGroup(
+            PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+        PanelWallLayout.setVerticalGroup(
+            PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
+
+        jPanel2.add(PanelWall);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 131, 62)), "SEP KONTROL BEDA POLI", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Inter Semibold", 0, 36), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
+        jPanel1Layout.columnWeights = new double[] {10.0, 23.0, 1.0, 1.0, 10.0};
+        jPanel1.setLayout(jPanel1Layout);
 
         NoRMPasien.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 131, 62), 2, true));
         NoRMPasien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        NoRMPasien.setFont(new java.awt.Font("Inter", 0, 24)); // NOI18N
+        NoRMPasien.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
         NoRMPasien.setPreferredSize(new java.awt.Dimension(350, 75));
         NoRMPasien.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -84,64 +115,69 @@ public class DlgCekNoRM extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(NoRMPasien, gridBagConstraints);
 
         jLabel28.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel28.setText("No. RM / NIK : ");
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("No. RM / No. Kartu BPJS : ");
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel28.setPreferredSize(new java.awt.Dimension(350, 75));
+        jLabel28.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.ipady = 5;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipady = 10;
         jPanel1.add(jLabel28, gridBagConstraints);
 
-        BtnClose.setBackground(new java.awt.Color(255, 255, 255));
-        BtnClose.setForeground(new java.awt.Color(51, 51, 51));
-        BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
-        BtnClose.setMnemonic('U');
-        BtnClose.setToolTipText("Alt+U");
-        BtnClose.setFont(new java.awt.Font("Inter", 1, 11)); // NOI18N
-        BtnClose.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
-        BtnClose.setIconTextGap(2);
-        BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        BtnClose.setPreferredSize(new java.awt.Dimension(100, 75));
-        BtnClose.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnClose.addActionListener(new java.awt.event.ActionListener() {
+        BtnTutup.setBackground(new java.awt.Color(255, 255, 255));
+        BtnTutup.setForeground(new java.awt.Color(51, 51, 51));
+        BtnTutup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
+        BtnTutup.setMnemonic('U');
+        BtnTutup.setToolTipText("Alt+U");
+        BtnTutup.setFont(new java.awt.Font("Inter", 1, 11)); // NOI18N
+        BtnTutup.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
+        BtnTutup.setIconTextGap(2);
+        BtnTutup.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BtnTutup.setPreferredSize(new java.awt.Dimension(100, 75));
+        BtnTutup.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        BtnTutup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCloseActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 14;
-        jPanel1.add(BtnClose, gridBagConstraints);
-
-        BtnClose2.setBackground(new java.awt.Color(255, 255, 255));
-        BtnClose2.setForeground(new java.awt.Color(51, 51, 51));
-        BtnClose2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
-        BtnClose2.setMnemonic('U');
-        BtnClose2.setToolTipText("Alt+U");
-        BtnClose2.setFont(new java.awt.Font("Inter", 1, 11)); // NOI18N
-        BtnClose2.setIconTextGap(0);
-        BtnClose2.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        BtnClose2.setPreferredSize(new java.awt.Dimension(100, 75));
-        BtnClose2.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnClose2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnClose2ActionPerformed(evt);
+                BtnTutupActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 14;
-        jPanel1.add(BtnClose2, gridBagConstraints);
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(BtnTutup, gridBagConstraints);
+
+        BtnCek.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCek.setForeground(new java.awt.Color(51, 51, 51));
+        BtnCek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
+        BtnCek.setMnemonic('U');
+        BtnCek.setToolTipText("Alt+U");
+        BtnCek.setFont(new java.awt.Font("Inter", 1, 11)); // NOI18N
+        BtnCek.setIconTextGap(0);
+        BtnCek.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BtnCek.setPreferredSize(new java.awt.Dimension(100, 75));
+        BtnCek.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        BtnCek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCekActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(BtnCek, gridBagConstraints);
 
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
-        jPanel3.setPreferredSize(new java.awt.Dimension(294, 402));
+        jPanel3.setPreferredSize(new java.awt.Dimension(350, 399));
 
         btnAngka8.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka8.setText("8");
@@ -269,21 +305,22 @@ public class DlgCekNoRM extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAngka8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAngka9, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnAngka9, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAngka7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAngka8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAngka9, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAngka4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAngka6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAngka5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAngka6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAngka4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAngka3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,17 +330,34 @@ public class DlgCekNoRM extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAngka0, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAngkaHps, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.gridheight = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
         jPanel1.add(jPanel3, gridBagConstraints);
+
+        jLabel30.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel30.setPreferredSize(new java.awt.Dimension(500, 75));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(jLabel30, gridBagConstraints);
+
+        jLabel29.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel29.setPreferredSize(new java.awt.Dimension(500, 75));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(jLabel29, gridBagConstraints);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -312,36 +366,57 @@ public class DlgCekNoRM extends javax.swing.JDialog {
 
     private void NoRMPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMPasienKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            BtnClose2ActionPerformed(null);
+            if (NoRMPasien.getText().isBlank()) {
+                JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
+            } else {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
+                    form.tampilKunjunganBedaPoli(NoRMPasien.getText());
+                } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", NoRMPasien.getText()) == 1) {
+                    form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_rkm_medis = ?", NoRMPasien.getText()));
+                } else if (Sequel.cariInteger("select count(*) from pasien where no_ktp = ?", NoRMPasien.getText()) == 1) {
+                    form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_ktp = ?", NoRMPasien.getText()));
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan!");
+                    this.setCursor(Cursor.getDefaultCursor());
+                    return;
+                }
+                form.setSize(this.getWidth(), this.getHeight());
+                form.setLocationRelativeTo(jPanel1);
+                this.dispose();
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
+            }
         }
     }//GEN-LAST:event_NoRMPasienKeyPressed
 
-    private void BtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseActionPerformed
+    private void BtnTutupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTutupActionPerformed
         dispose();
-    }//GEN-LAST:event_BtnCloseActionPerformed
+    }//GEN-LAST:event_BtnTutupActionPerformed
 
-    private void BtnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose2ActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    private void BtnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCekActionPerformed
         if (NoRMPasien.getText().isBlank()) {
-            Valid.textKosong(NoRMPasien, "Input");
-        } else if (Sequel.cariExistsSmc("select * from pasien where pasien.no_rkm_medis = ?", NoRMPasien.getText())) {
-            form.setPasien(NoRMPasien.getText());
-            form.setSize(this.getWidth(), this.getHeight());
-            form.setLocationRelativeTo(jPanel1);
-            this.dispose();
-            form.setVisible(true);
-        } else if (Sequel.cariExistsSmc("select * from pasien where pasien.no_ktp = ?", NoRMPasien.getText())) {
-            form.setPasien(Sequel.cariIsiSmc("select pasien.no_rkm_medis from pasien where pasien.no_ktp = ?", NoRMPasien.getText()));
-            form.setSize(this.getWidth(), this.getHeight());
-            form.setLocationRelativeTo(jPanel1);
-            this.dispose();
-            form.setVisible(true);
+            JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
         } else {
-            JOptionPane.showMessageDialog(rootPane, "No Rekam Medis tidak terdaftar ");
-            NoRMPasien.setText("");
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
+                form.tampilKunjunganBedaPoli(NoRMPasien.getText());
+            } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", NoRMPasien.getText()) == 1) {
+                form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_rkm_medis = ?", NoRMPasien.getText()));
+            } else if (Sequel.cariInteger("select count(*) from pasien where no_ktp = ?", NoRMPasien.getText()) == 1) {
+                form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_ktp = ?", NoRMPasien.getText()));
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan!");
+                this.setCursor(Cursor.getDefaultCursor());
+                return;
+            }
+            form.setSize(this.getWidth(), this.getHeight());
+            form.setLocationRelativeTo(jPanel1);
+            this.dispose();
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
         }
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnClose2ActionPerformed
+    }//GEN-LAST:event_BtnCekActionPerformed
 
     private void btnAngka8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka8ActionPerformed
         NoRMPasien.setText(NoRMPasien.getText() + "8");
@@ -407,8 +482,9 @@ public class DlgCekNoRM extends javax.swing.JDialog {
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgCekNoRM dialog = new DlgCekNoRM(new javax.swing.JFrame(), true);
+            DlgCekKunjunganBedaPoliSEP dialog = new DlgCekKunjunganBedaPoliSEP(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
                     System.exit(0);
@@ -418,9 +494,10 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ButtonBig BtnClose;
-    private widget.ButtonBig BtnClose2;
+    private widget.ButtonBig BtnCek;
+    private widget.ButtonBig BtnTutup;
     private widget.TextBox NoRMPasien;
+    private usu.widget.glass.PanelGlass PanelWall;
     private javax.swing.JButton btnAngka0;
     private javax.swing.JButton btnAngka1;
     private javax.swing.JButton btnAngka2;
@@ -434,7 +511,10 @@ public class DlgCekNoRM extends javax.swing.JDialog {
     private javax.swing.JButton btnAngkaHps;
     private javax.swing.JButton btnClear;
     private widget.Label jLabel28;
+    private widget.Label jLabel29;
+    private widget.Label jLabel30;
     private widget.Panel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }

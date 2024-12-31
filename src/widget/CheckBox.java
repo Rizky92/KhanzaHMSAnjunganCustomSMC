@@ -5,25 +5,27 @@
 package widget;
 
 import java.awt.Color;
-import javax.swing.JRadioButton;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JCheckBox;
 
 /**
  *
  * @author dosen3
  */
-public class RadioButton extends JRadioButton {
+public class CheckBox extends JCheckBox {
 
     private static final long serialVersionUID = 1L;
 
-    public RadioButton() {
+    public CheckBox() {
         super();
         setFont(new java.awt.Font("Inter", 0, 11));
-        setBackground(new Color(255, 255, 255));
+        //setBackground(new Color(209,209,209));
+        //setForeground(new Color(90,90,90));
+        setBackground(new Color(102, 255, 255));
         setForeground(new Color(50, 50, 50));
         setFocusPainted(false);
-        setBorder(new EmptyBorder(1, 1, 1, 1));
-        setOpaque(false);
+
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(255, 0, 0)));
+        setOpaque(true);
         setSize(WIDTH, 23);
     }
 }

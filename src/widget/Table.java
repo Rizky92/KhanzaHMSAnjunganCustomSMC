@@ -1,7 +1,6 @@
 package widget;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 
